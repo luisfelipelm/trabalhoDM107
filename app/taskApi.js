@@ -1,13 +1,41 @@
 //Dependencies
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
+var mysql   = require('mysql');
+
+
+//database configuration
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'lflm.zp,lflm',
+  database : 'dm107'
+});
+
 
 var 
-    db = {},
+   // db = {},
     sequence = 0;
 
 router.get('/', function(req,res) {
-    res.json(db);
+    connection.connect(function(err){
+        if(!err) {
+            console.log("Database is connected ... \n\n");
+        } else {
+            console.log("Error connecting database ... \n\n");  
+        }
+    });
+    connection.query('SELECT * from entregas', function(err, rows, fields) {
+        if (!err) {
+            console.log('The solution is: ', rows);
+            res.json(rows);
+           
+        }else{
+            console.log('Error while performing Query.');
+        }
+    });
+    
+    connection.end();
 });
 
 router.get('/:id', function(req,res) {
