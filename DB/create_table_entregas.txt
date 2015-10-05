@@ -1,0 +1,68 @@
+CREATE TABLE `dm107`.`entregas` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `id_pedido` INT UNSIGNED NOT NULL COMMENT '',
+  `id_cliente` INT UNSIGNED NOT NULL COMMENT '',
+  `nome_recebedor` VARCHAR(100) NOT NULL COMMENT '',
+  `cpf_recebedor` VARCHAR(11) NOT NULL COMMENT '',
+  `endereco` VARCHAR(100) NOT NULL COMMENT '',
+  `bairro` VARCHAR(100) NOT NULL COMMENT '',
+  `cidade` VARCHAR(100) NOT NULL COMMENT '',
+  `pais` VARCHAR(45) NOT NULL COMMENT '',
+  `recebedor_entregador` TINYINT NOT NULL COMMENT '',
+  `data_entrega` DATETIME NOT NULL COMMENT '',
+  `localizacao_geografica` VARCHAR(100) NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '');
+
+  
+INSERT INTO `dm107`.`entregas`
+(`id_pedido`,
+`id_cliente`,
+`nome_recebedor`,
+`cpf_recebedor`,
+`endereco`,
+`bairro`,
+`cidade`,
+`pais`,
+`recebedor_entregador`,
+`data_entrega`,
+`localizacao_geografica`)
+VALUES
+(
+1,
+2,
+'Luis Felipe',
+'12345678900',
+'Rua Teste 509',
+'Bairro Teste',
+'Cidade Teste',
+'Pais Teste',
+true,
+'2015/01/01 22:00:12',
+'localizacao geografica');
+
+INSERT INTO `dm107`.`entregas`
+(`id_pedido`,
+`id_cliente`,
+`nome_recebedor`,
+`cpf_recebedor`,
+`endereco`,
+`bairro`,
+`cidade`,
+`pais`,
+`recebedor_entregador`,
+`data_entrega`,
+`localizacao_geografica`)
+VALUES
+(
+1,
+3,
+'Cecilia',
+'12345678900',
+'Rua Teste 509',
+'Bairro Teste',
+'Cidade Teste',
+'Pais Teste',
+true,
+'2015/01/01 15:00:12',
+'localizacao geografica');
