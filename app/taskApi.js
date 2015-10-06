@@ -13,73 +13,86 @@ var connection = mysql.createConnection({
 });
 
 
+connection.connect(function(err){
+    if(!err) {
+        console.log("Database is connected ... \n\n");
+    } else {
+        console.log("Error connecting database ... \n\n");  
+        res.status(503).send(err);
+    }
+});
+
 var 
    // db = {},
     sequence = 0;
 
 router.get('/', function(req,res) {
-    connection.connect(function(err){
-        if(!err) {
-            console.log("Database is connected ... \n\n");
-        } else {
-            console.log("Error connecting database ... \n\n");  
-        }
-    });
     connection.query('SELECT * from entregas', function(err, rows, fields) {
         if (!err) {
-            console.log('The solution is: ', rows);
+            console.log('GET OK: ', rows);
             res.json(rows);
            
         }else{
-            console.log('Error while performing Query.');
+            res.status(404).send('Not found!');
         }
     });
-    
-    connection.end();
 });
 
-router.get('/:id', function(req,res) {
-    var task = db[req.params.id];
-    if (task){
-        res.json(task);
-    }
-    else {
-        res.status(404).send('Not found!');
-    }
+router.get('/:id', function(req,res) {       
+    connection.query('SELECT * from entregas where id = ' + req.params.id, function(err, rows, fields) {
+        if (!err) {
+            if (rows.length > 0) {
+                console.log('GET by ID OK: ', rows);           
+                res.json(rows);
+            }
+            else{
+                console.log('This delivery does not exists!');
+                res.status(404).send('This delivery does not exists!');
+            }
+        }else{
+            res.status(404).send('Not found!');
+        }
+    });
 });
 
 router.post('/', function(req,res){
-    var newTask = {
-        id: ++sequence,
-        done: req.body.done || false,
-        description: req.body.description
-    };
-    db[newTask.id] = newTask;
-    res.status(201).json(newTask);
+    connection.query('INSERT INTO entregas SET ?',req.body, function(err, rows, fields) {
+        if (!err) {
+            console.log('POST OK: ', rows);
+            res.status(201).json(rows);
+           
+        }else{
+            res.status(404).send('Not found!');
+        }
+    });    
+    
 });
 
 router.put('/:id', function(req,res){
-    var task = db[req.params.id];
-    if (task){
-        task.done = req.body.done != null ? req.body.done : false;
-        task.description = req.body.description || task.description;
-        res.json(task);
-    }
-    else{
-        res.status(404).send('Not found');
-    }
+    
+    connection.query('UPDATE entregas SET ? WHERE id='+req.params.id, req.body, function(err, rows, fields) {
+        if (!err) {
+            console.log('PUT OK: ', rows);
+            res.status(201).json(rows);
+           
+        }else{
+            res.status(404).send('Not found!');
+        }
+    });    
+
 });
 
 router.delete('/:id', function(req,res){
-    var task = db[req.params.id];
-    if (task){
-        delete db[req.params.id];
-        res.status(200).send('Task deleted');
-    }
-    else
-    {
-        res.status(404).send('Not found');
-    }
+    connection.query('DELETE FROM entregas WHERE id = ?', req.params.id, function(err, rows, fields) {
+        if (!err) {
+            console.log('DELETE OK: ', rows);
+            res.status(201).json(rows);
+           
+        }else{
+            res.status(404).send('Not found!');
+        }
+    });    
 });
 
+    //connection.end();
 module.exports = router;
