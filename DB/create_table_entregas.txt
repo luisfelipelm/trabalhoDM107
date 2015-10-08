@@ -66,3 +66,39 @@ VALUES
 true,
 '2015/01/01 15:00:12',
 'localizacao geografica');
+
+
+CREATE TABLE `dm107`.`user` (
+  `iduser` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `name` VARCHAR(100) NOT NULL COMMENT '',
+  `email` VARCHAR(100) NOT NULL COMMENT '',
+  `password` VARCHAR(100) NOT NULL COMMENT '',
+  `role` VARCHAR(45) NOT NULL COMMENT '',
+  `token` VARCHAR(200) COMMENT '',
+  PRIMARY KEY (`iduser`)  COMMENT '',
+  UNIQUE INDEX `iduser_UNIQUE` (`iduser` ASC)  COMMENT '',
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC)  COMMENT '');
+ 
+ 
+INSERT INTO `dm107`.`user`
+(`name`,
+`email`,
+`password`,
+`role`)
+VALUES
+('admin',
+'admin@admin.com',
+'admin',
+'ADMIN');
+
+ 
+INSERT INTO `dm107`.`user`
+(`name`,
+`email`,
+`password`,
+`role`)
+VALUES
+('Luis Felipe',
+'luisfelipelmtc@gmail.com',
+'luisfelipe',
+'USER');
