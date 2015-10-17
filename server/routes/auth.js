@@ -8,10 +8,12 @@ var auth = {
 
   login: function(req, res) {
 
+    console.log(req.body);  
     var username = req.body.username || '';
     var password = req.body.password || '';
       
     if (username == '' || password == '') {
+console.log('passou1');     
       res.status(401);
       res.json({
         "status": 401,
@@ -22,6 +24,7 @@ var auth = {
     // Fire a query to your DB and check if the credentials are valid
     auth.validate(username, password, function(dbUserObj) {      
          if (!dbUserObj) { // If authentication fails, we send a 401 back
+console.log('passou2');            
             res.status(401);
             res.json({
                 "status": 401,

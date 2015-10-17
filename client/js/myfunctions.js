@@ -6,7 +6,7 @@ function show() {
         'otherSettings': 'othervalues',
         dataType: 'json',
         'beforeSend': function(xhr) {
-       xhr.setRequestHeader('X-Access-Token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDU1NjA2NzgxMjN9.9Mn0WGGfytsTe1-ETO5WQPpLydBuw1SrIq_fhGFdauI') //May need to use "Authorization" instead
+       xhr.setRequestHeader('X-Access-Token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDU2NDYxOTcwNzJ9.9ErfrGna8kPs3DPR_IIDA6gXMJo4-7y470BxEfZXOEQ') //May need to use "Authorization" instead
         },
         success: function(result) {
             // remove all existing rows
@@ -23,8 +23,9 @@ function show() {
                         .append('<td>' + article.endereco + '</td>')
                         .append('<td>' + article.bairro + '</td>')
                         .append('<td>' + article.cidade + '</td>')
+                        .append('<td>' + article.estado + '</td>')
                         .append('<td>' + article.pais + '</td>')
-                        .append('<td>' + article.recebedor_entregador + '</td>')
+                        .append('<td>' + Boolean(article.recebedor_entregador) + '</td>')
                         .append('<td>' + article.data_entrega + '</td>')
                         .append('<td>' + article.localizacao_geografica + '</td>')
                 );	
