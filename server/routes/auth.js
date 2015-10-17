@@ -20,10 +20,32 @@ var auth = {
       return;
     }
     // Fire a query to your DB and check if the credentials are valid
-    var dbUserObj = auth.validate(username, password, res);
+    auth.validate(username, password, function(dbUserObj) {      
+         if (!dbUserObj) { // If authentication fails, we send a 401 back
+            res.status(401);
+            res.json({
+                "status": 401,
+                "message": "Invalid credentials"
+            });
+         }
+
+         if (dbUserObj) {            
+            // If authentication is success, we will generate a token
+            // and dispatch it to the client
+            res.json(genToken(dbUserObj));
+             connection.query("UPDATE user SET token = '" + tokenAux.toString() + "' WHERE email = '" + username + "'", function(err, rows, fields) {
+                if (!err) {
+                     console.log('Add token to ' + username);
+
+                }else{
+                     console.log('Error to add a token to ' + username);
+                }
+        });          
+          }
+    });
   },
 
-  validate: function(username, password, res) {
+  validate: function(username, password, callback) {
     // spoofing the DB response for simplicity
     console.log('entrou validate');
     var dbUserObj;
@@ -41,36 +63,13 @@ var auth = {
              dbUserObj = null;
         }
         
-        if (!dbUserObj) { // If authentication fails, we send a 401 back
-            res.status(401);
-            res.json({
-                "status": 401,
-                "message": "Invalid credentials"
-            });
-        }
-
-        if (dbUserObj) {            
-            // If authentication is success, we will generate a token
-            // and dispatch it to the client
-            res.json(genToken(dbUserObj));
-console.log(tokenAux);
-            connection.query("UPDATE user SET token = '" + tokenAux.toString() + "' WHERE email = '" + username + "'", function(err, rows, fields) {
-                if (!err) {
-                     console.log('Add token to ' + username);
-
-                }else{
-                     dbUserObj = null;
-                }
-            });          
-        }
+        callback(dbUserObj);
     }); 
 
   },
 
   validateUser: function(tokenUser,callback) {
       var dbUserObj;
- console.log('passou validateUser1');
-      
       connection.query("SELECT * from user WHERE token = '" + tokenUser + "'", function(err, rows, fields) {
         if (!err) {
                 dbUserObj = {  
@@ -78,26 +77,21 @@ console.log(tokenAux);
                   role: rows[0].role,
                   username: rows[0].email
                 };
-console.log(dbUserObj);
-console.log('passou validadeUser3');
            
         }else{
              dbUserObj = null;
         }
         
         if (!dbUserObj) { // If authentication fails, we send a 401 back
-            return;
+            callback(null);
         }
 
         if (dbUserObj) {            
             // If authentication is success, we will generate a token
             // and dispatch it to the client
             //res.json(genToken(dbUserObj));
-console.log('success authentication');
-            return dbUserObj;
+            callback(dbUserObj);
         }
-          
-console.log('passou validadeUser2');
     });
   },
 }

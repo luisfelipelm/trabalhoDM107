@@ -1,0 +1,60 @@
+body 
+{
+   background-color:#E6E6E6;
+	background-repeat:no-repeat;
+	background-size: 1599px;
+
+}
+
+h1 
+{
+    color:#FF0000;
+    font-size: 45px;
+    text-align: center;
+}
+
+p 
+{
+    font-family:trebuchet;
+    font-size: 30px;
+    text-align:center;
+}
+
+ul 
+{
+    list-style-type:none;
+    margin: 10;
+    padding: 10;
+	display:inline;
+    width: 60px;
+} 
+
+h2
+{
+	color:#FF0000;
+    font-size: 45px;
+    text-align: center;
+}
+
+li 
+{    
+	font-size:40px;
+	float: right;
+    text-align: center;
+} 
+
+fieldset 
+{
+color:#2E2E2E;
+background-color:#FFFFFF;
+text-align:center;
+font-size:20px;
+} 
+
+table
+{
+color:#2E2E2E;
+background-color:#FFFFFF;
+font-size:10px;
+text-align: center;
+}
