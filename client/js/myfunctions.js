@@ -6,7 +6,7 @@ function show() {
         'otherSettings': 'othervalues',
         dataType: 'json',
         'beforeSend': function(xhr) {
-       xhr.setRequestHeader('X-Access-Token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDU2NDYxOTcwNzJ9.9ErfrGna8kPs3DPR_IIDA6gXMJo4-7y470BxEfZXOEQ') //May need to use "Authorization" instead
+       xhr.setRequestHeader('X-Access-Token', sessionStorage.getItem("token")) //May need to use "Authorization" instead
         },
         success: function(result) {
             // remove all existing rows

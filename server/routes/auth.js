@@ -12,8 +12,7 @@ var auth = {
     var username = req.body.username || '';
     var password = req.body.password || '';
       
-    if (username == '' || password == '') {
-console.log('passou1');     
+    if (username == '' || password == '') {  
       res.status(401);
       res.json({
         "status": 401,
@@ -23,8 +22,7 @@ console.log('passou1');
     }
     // Fire a query to your DB and check if the credentials are valid
     auth.validate(username, password, function(dbUserObj) {      
-         if (!dbUserObj) { // If authentication fails, we send a 401 back
-console.log('passou2');            
+         if (!dbUserObj) { // If authentication fails, we send a 401 back          
             res.status(401);
             res.json({
                 "status": 401,
@@ -50,7 +48,6 @@ console.log('passou2');
 
   validate: function(username, password, callback) {
     // spoofing the DB response for simplicity
-    console.log('entrou validate');
     var dbUserObj;
     
     connection.query("SELECT * from user WHERE email = '" + username + "'" + "and password = " + "'" + password + "'", function(err, rows, fields) {
@@ -59,9 +56,7 @@ console.log('passou2');
                   name: rows[0].name,
                   role: rows[0].role,
                   username: rows[0].email
-                };
-                console.log(dbUserObj);
-           
+                };           
         }else{
              dbUserObj = null;
         }
