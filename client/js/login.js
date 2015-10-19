@@ -11,8 +11,12 @@ function login() {
         var data={};
         xmlhttp.onreadystatechange = function(){
             if (xmlhttp.readyState != 4) return;
+            if (xmlhttp.status == 401){
+                alert('Usuário e/ou senha incorreto(s)!');
+                return;
+            }
             if (xmlhttp.status != 200 && xmlhttp.status != 304) {
-                alert('HTTP error ' + req.status);
+                alert('HTTP error ' + xmlhttp.status);
                 return;
             }
 

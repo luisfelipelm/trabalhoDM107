@@ -1,0 +1,196 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "Todo List API",
+        "description": "This document describes the Todo List API"
+    },
+    "host": "localhost:3000",
+    "tags": [
+        {
+            "name": "Delivery",
+            "description": "Everything about Deliveries"
+        },
+        {
+            "name": "User",
+            "description": "Everything about User"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/api",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/deliveries": {
+            "get": {
+                "tags": [
+                    "Delivery"
+                ],
+                "summary": "List all deliveries",
+                "description": "Gets `Delivery` objects.\n",
+                "responses": {
+                    "200": {
+                        "description": "List all deliveries",
+                        "schema": {
+                            "title": "Deliveries",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Delivery"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Delivery"
+                ],
+                "summary": "Create a new delivery",
+                "parameters": [
+                    {
+                        "name": "delivery",
+                        "in": "body",
+                        "description": "Create a delivery",
+                        "schema": {
+                            "$ref": "#/definitions/Delivery"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delivery added"
+                    }
+                }
+            }
+        },
+        "/deliveries/{id}": {
+            "get": {
+                "tags": [
+                    "Delivery"
+                ],
+                "summary": "Get a specific delivery",
+                "description": "Gets `Delivery` objects.\n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of the delivery",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delivery",
+                        "schema": {
+                            "title": "Delivery",
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/Delivery"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Delivery"
+                ],
+                "summary": "Update a specific delivery",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of the delivery",
+                        "required": true
+                    },
+                    {
+                        "name": "delivery",
+                        "in": "body",
+                        "description": "Delivery with the updated information",
+                        "schema": {
+                            "$ref": "#/definitions/Delivery"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Save a delivery"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delivery"
+                ],
+                "summary": "Delete a specific delivery",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "ID of the delivery",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No response received"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Delivery": {
+            "properties": {
+                "id_pedido": {
+                    "type": "integer"
+                },
+                "id_cliente": {
+                    "type": "integer"
+                },
+                "nome_recebedor": {
+                    "type": "string"
+                },
+                "cpf_recebedor": {
+                    "type": "string"
+                },
+                "endereco": {
+                    "type": "string"
+                },
+                "bairro": {
+                    "type": "string"
+                },
+                "cidade": {
+                    "type": "string"
+                },
+                "estado": {
+                    "type": "string"
+                },
+                "pais": {
+                    "type": "string"
+                },
+                "recebedor_entregador": {
+                    "type": "boolean"
+                },
+                "data_entrega": {
+                    "type": "string"
+                }
+                ,
+                "localizacao_geografica": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

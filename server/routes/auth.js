@@ -52,11 +52,17 @@ var auth = {
     
     connection.query("SELECT * from user WHERE email = '" + username + "'" + "and password = " + "'" + password + "'", function(err, rows, fields) {
         if (!err) {
-                dbUserObj = { // spoofing a userobject from the DB. 
+            console.log(rows);
+            if(rows.length > 0 ){
+                dbUserObj = {  
                   name: rows[0].name,
                   role: rows[0].role,
                   username: rows[0].email
-                };           
+                };
+            }
+            else{
+                dbUserObj = null;
+            }
         }else{
              dbUserObj = null;
         }

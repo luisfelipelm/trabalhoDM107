@@ -59,7 +59,7 @@ console.log('passou validateRequest');
       res.status(500);
       res.json({
         "status": 500,
-        "message": "Oops something went wrong",
+        "message": "Oops something went wrong. Maybe token is invalid!",
         "error": err
       });
     }
