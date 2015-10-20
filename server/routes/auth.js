@@ -75,13 +75,18 @@ var auth = {
   validateUser: function(tokenUser,callback) {
       var dbUserObj;
       connection.query("SELECT * from user WHERE token = '" + tokenUser + "'", function(err, rows, fields) {
-        if (!err) {
+         if (!err) {
+            console.log(rows);
+            if(rows.length > 0 ){
                 dbUserObj = {  
                   name: rows[0].name,
                   role: rows[0].role,
                   username: rows[0].email
                 };
-           
+            }
+            else{
+                dbUserObj = null;
+            }
         }else{
              dbUserObj = null;
         }
