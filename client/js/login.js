@@ -1,6 +1,7 @@
 function login() {
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        //xmlhttp.open("POST", "http://54.94.254.134:3000/login");
         xmlhttp.open("POST", "http://localhost:3000/login");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         var login = { 
@@ -23,7 +24,7 @@ function login() {
             data.resp = JSON.parse(xmlhttp.responseText);
             if(data.resp.token != null){
                 sessionStorage.setItem("token",data.resp.token);
-                window.open("./tabelaDeliveries.html","_blank");
+                location.assign("./html/tabelaDeliveries.html","_blank");
             }else{
                 alert('That didn\'t work!');
             }

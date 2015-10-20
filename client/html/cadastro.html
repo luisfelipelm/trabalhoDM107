@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<script src="../js/jquery.1.9.1.min.js"></script>
+		<!-- bootstrap just to have good looking page -->
+		<link href="../bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet" />
+		<!-- we code these -->
+		<script src="../js/cadastro.js"></script>
+	</head>
+	
+	<body>
+		<h1 style="text-align:center">Cadastro <br></h1>
+		<div style="width:700px;padding:20px;S">
+		<p>
+            <label class="label" id="labelEmail">Nome
+		        <input type="text" name="nome" id="nome" required />
+		    </label>
+        </p>
+		<p>
+            <label class="label" id="labelEmail">Email
+		        <input type="email" name="email" id="email" required />
+		    </label>
+        </p>
+        <p>
+            <label class="label" id="labelPassword">Password
+            <input type="password" name="password" id="password" required />
+            </label>
+        </p> 
+		<p>
+			<button class="btn btn-primary" type="button" onclick="cadastrar()">Cadastrar</button>
+		</p>
+        </div>        
+	</body> 
+</html>

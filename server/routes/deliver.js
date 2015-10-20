@@ -5,7 +5,7 @@ var products = {
   getAll: function(req, res) {
     connection.query('SELECT * from entregas', function(err, rows, fields) {
         if (!err) {
-            console.log('GET OK: ', rows);
+            console.log('GET OK');
             res.json(rows);
            
         }else{
@@ -18,7 +18,7 @@ var products = {
     connection.query('SELECT * from entregas where id = ' + req.params.id, function(err, rows, fields) {
         if (!err) {
             if (rows.length > 0) {
-                console.log('GET by ID OK: ', rows);           
+                console.log('GET by ID OK');           
                 res.json(rows);
             }
             else{
@@ -34,7 +34,7 @@ var products = {
   create: function(req, res) {
     connection.query('INSERT INTO entregas SET ?',req.body, function(err, rows, fields) {
         if (!err) {
-            console.log('POST OK: ', rows);
+            console.log('POST OK');
             res.status(201).json(rows);
            
         }else{
@@ -46,7 +46,7 @@ var products = {
   update: function(req, res) {
     connection.query('UPDATE entregas SET ? WHERE id='+req.params.id, req.body, function(err, rows, fields) {
         if (!err) {
-            console.log('PUT OK: ', rows);
+            console.log('PUT OK');
             res.status(201).json(rows);
            
         }else{
@@ -68,15 +68,5 @@ var products = {
   }
 };
 
-/*var data = [{
-  name: 'product 1',
-  id: '1'
-}, {
-  name: 'product 2',
-  id: '2'
-}, {
-  name: 'product 3',
-  id: '3'
-}];*/
 
 module.exports = products;

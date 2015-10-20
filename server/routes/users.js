@@ -39,6 +39,10 @@ var users = {
            
         }else{
             res.status(404).send('User already exists or something is wrong');
+            connection.rollback(function() {
+                console.log(err);
+                return;
+            });
         }
      });  
   },
