@@ -32,7 +32,7 @@ console.log('passou validateRequest');
         
               if (dbUser) {
 
-                if ((req.url.indexOf('admin') >= 0 && dbUser.role == 'ADMIN') || (req.url.indexOf('admin') < 0 && req.url.indexOf('/api/v1/') >= 0)) {
+                if ((req.url.indexOf('admin') >= 0 && dbUser.role == 'ADMIN') || (req.url.indexOf('admin') < 0 && req.url.indexOf('/api/') >= 0)) {
                   console.log('eh admin');
                     next(); // To move to next middleware
                 } else {

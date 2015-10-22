@@ -3,7 +3,7 @@ function show() {
     
     $.ajax({
         //'url': 'http://54.94.254.134:3000/api/v1/deliveries',
-        'url': 'http://localhost:3000/api/v1/deliveries',
+        'url': 'http://localhost:3000/api/deliveries',
         'otherSettings': 'othervalues',
         dataType: 'json',
         'beforeSend': function(xhr) {
