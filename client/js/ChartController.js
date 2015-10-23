@@ -57,7 +57,7 @@ var ChartController = {
         
 		var ctx = document.getElementById('myChart').getContext("2d");
                 
-        var myPieChart = new Chart(ctx).Pie(CreateChart.data, CreateChart.options);
+        var myPieChart = new Chart(ctx).Pie(ChartController.data, ChartController.options);
 
 	},
     
@@ -84,7 +84,7 @@ var ChartController = {
         ChartController.setDataChart(statusNew, statusInTransport, statusDelivered);
 	},
     
-    setDataChart: function (statusNew, statusInTransport, statusDelivered)) {
+    setDataChart: function (statusNew, statusInTransport, statusDelivered) {
         var list = ChartController.data;
 			list.forEach(function(slice) {
                 if(slice.label == 'Pedidos Novos'){
@@ -95,10 +95,10 @@ var ChartController = {
                 }else{
                     slice.value = statusInTransport;
                 }
-            }
+            });
 
 	}
 };
     
     //initialization
-CreateChart.init();
+ChartController.init();
