@@ -10,12 +10,12 @@ CREATE TABLE `dm107`.`entregas` (
   `estado` VARCHAR(45) NOT NULL COMMENT '',
   `pais` VARCHAR(45) NOT NULL COMMENT '',
   `recebedor_entregador` TINYINT NOT NULL COMMENT '',
-  `data_entrega` DATETIME NOT NULL COMMENT '',
+  `data_entrega` DATETIME COMMENT '',
   `localizacao_geografica` VARCHAR(100) NOT NULL COMMENT '',
+  `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`)  COMMENT '',
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)  COMMENT '');
 
-  
 INSERT INTO `dm107`.`entregas`
 (`id_pedido`,
 `id_cliente`,

@@ -1,22 +1,22 @@
-var CreateChart = {
+var ChartController = {
     data: [
         {
             value: 300,
             color:"#F7464A",
             highlight: "#FF5A5E",
-            label: "Red"
+            label: "Pedidos Novos"
         },
         {
             value: 50,
             color: "#46BFBD",
             highlight: "#5AD3D1",
-            label: "Green"
+            label: "Pedidos Entregues"
         },
         {
             value: 100,
             color: "#FDB45C",
             highlight: "#FFC870",
-            label: "Yellow"
+            label: "Pedidos em Transporte"
         }
     ],
     
@@ -53,10 +53,49 @@ var CreateChart = {
     ],
         
 	init: function () {
+        ChartController.countSstatus;
         
 		var ctx = document.getElementById('myChart').getContext("2d");
                 
         var myPieChart = new Chart(ctx).Pie(CreateChart.data, CreateChart.options);
+
+	},
+    
+    
+    countSstatus: function (status) {
+        var 
+            statusNew = 0,
+            statusInTransport = 0,
+            statusDelivered = 0,
+            list = DeliveryService.getList(function(list) {
+                list.forEach(function(delivery) {
+                    if(delivery.status == 'NEW'){
+                        statusNew += 1;
+                    } 
+                    else if(delivery.status == 'IN TRANSPORT'){
+                        statusInTransport += 1;           
+                    }
+                    else{
+                        delivery.statusDelivered += 1;
+                    }
+                });
+            });
+        
+        ChartController.setDataChart(statusNew, statusInTransport, statusDelivered);
+	},
+    
+    setDataChart: function (statusNew, statusInTransport, statusDelivered)) {
+        var list = ChartController.data;
+			list.forEach(function(slice) {
+                if(slice.label == 'Pedidos Novos'){
+                    slice.value = statusNew;
+                }
+                else if(slice.label == 'Pedidos Entregues'){
+                    slice.value = statusDelivered;
+                }else{
+                    slice.value = statusInTransport;
+                }
+            }
 
 	}
 };

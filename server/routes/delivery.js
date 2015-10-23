@@ -32,6 +32,7 @@ var products = {
   },
 
   create: function(req, res) {
+    req.params.status = 'NEW';
     connection.query('INSERT INTO entregas SET ?',req.body, function(err, rows, fields) {
         if (!err) {
             console.log('POST OK');
