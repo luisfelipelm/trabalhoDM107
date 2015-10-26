@@ -53,21 +53,18 @@ var ChartController = {
     ],
         
 	init: function () {
-        ChartController.countSstatus;
-        
-		var ctx = document.getElementById('myChart').getContext("2d");
-                
-        var myPieChart = new Chart(ctx).Pie(ChartController.data, ChartController.options);
+        ChartController.countSstatus();
 
 	},
     
     
-    countSstatus: function (status) {
+    countSstatus: function () {
         var 
             statusNew = 0,
             statusInTransport = 0,
             statusDelivered = 0,
             list = DeliveryService.getList(function(list) {
+                console.log(list);
                 list.forEach(function(delivery) {
                     if(delivery.status == 'NEW'){
                         statusNew += 1;
@@ -76,12 +73,11 @@ var ChartController = {
                         statusInTransport += 1;           
                     }
                     else{
-                        delivery.statusDelivered += 1;
+                        statusDelivered += 1;
                     }
                 });
-            });
-        
-        ChartController.setDataChart(statusNew, statusInTransport, statusDelivered);
+                 ChartController.setDataChart(statusNew, statusInTransport, statusDelivered);
+            });       
 	},
     
     setDataChart: function (statusNew, statusInTransport, statusDelivered) {
@@ -96,6 +92,9 @@ var ChartController = {
                     slice.value = statusInTransport;
                 }
             });
+               
+        var ctx = document.getElementById('myChart').getContext("2d");              
+        var myPieChart = new Chart(ctx).Pie(ChartController.data, ChartController.options);       
 
 	}
 };
