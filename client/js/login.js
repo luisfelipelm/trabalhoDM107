@@ -24,7 +24,7 @@ function login() {
             data.resp = JSON.parse(xmlhttp.responseText);
             if(data.resp.token != null){
                 sessionStorage.setItem("token",data.resp.token);
-                location.assign("./html/tabelaDeliveries.html","_blank");
+                location.assign("./html/report.html","_blank");
             }else{
                 alert('That didn\'t work!');
             }

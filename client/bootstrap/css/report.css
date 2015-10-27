@@ -1,0 +1,13 @@
+.chartArea{
+    text-align: center;   
+}
+
+.titleTable{
+    text-align: center;   
+    color: darkgrey;
+}
+
+.tableHeader{
+    background-color: lightgrey;
+    border-color: black;
+}
