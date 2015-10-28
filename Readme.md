@@ -5,9 +5,9 @@ Para se utilizar o serviço, é necessário ter o banco de dados MySQL instalado
 Utilize o arquivo */DB/create_table_entregas.txt* para criar as tabelas.
 
 Antes de executar o servidor, é necessário executar o seguinte comando na pasta /server para instalar os pacotes ncessários.
-*npm update*
+**npm update*
 
-Para iniciar o servidor, é necessario acessar a pasta /server e executar o seguinte comando
+Para iniciar o servidor, é necessario acessar a pasta /server e executar o seguinte comando:
 *node server.js* 
 
 O servirdor está configurado para rodar utilizando a porta 3000.
@@ -21,15 +21,15 @@ Acesse algum aplicativo REST para "logar" e receber o token de acesso.
 Utilize a URL http://localhost:3000/login , JSON {"username":"admi@admin.com","password":"admin"} e Content-Type "application/json".
 
 O Response será algo parecido com:
-{
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDY2NzQ4ODUzNzJ9.H8t9NMDiFOQAbzv88twR8khzFvYysNzKCNAh-hNVxQE",
-    "expires": 1446674885372,
-    "user": {
-        "name": "Luis Felipe",
-        "role": "USER",
-        "username": "luisfelipelmtc@gmail.com"
-    }
-}
+*{
+*    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NDY2ODAxNTg2Mzh9.vzxz26uZcWEg2nqysiShnJ6wreDAnB2sQeOXsJ_dLSI",
+*    "expires": 1446680158638,
+*    "user": {
+*        "name": "admin",
+*        "role": "ADMIN",
+*        "username": "admin@admin.com"
+*    }
+*}
 
 Após ter o token em mãos, acesse a url http://localhost:3000.
 
