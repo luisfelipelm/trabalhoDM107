@@ -29,6 +29,9 @@ app.all('/api/*', [require('./middlewares/validateRequest')]);
 
 app.use('/', require('./routes'));
 
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
 // If no route is matched by now, it must be a 404
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -37,7 +40,7 @@ app.use(function(req, res, next) {
 });
 
 // Start the server
-app.set('port', process.env.PORT || 3080);
+app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
