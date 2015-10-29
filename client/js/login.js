@@ -2,7 +2,7 @@ function login() {
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
         //xmlhttp.open("POST", "http://54.94.254.134:3000/login");
-        xmlhttp.open("POST", "http://localhost:3000/login");
+        xmlhttp.open("POST", "http://localhost:3080/login");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         var login = { 
                 'username': document.getElementById("email").value,

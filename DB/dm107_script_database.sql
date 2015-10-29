@@ -28,7 +28,8 @@ INSERT INTO `dm107`.`entregas`
 `pais`,
 `recebedor_entregador`,
 `data_entrega`,
-`localizacao_geografica`)
+`localizacao_geografica`,
+`status`)
 VALUES
 (
 1,
@@ -42,7 +43,8 @@ VALUES
 'Pais Teste',
 true,
 '2015/01/01 22:00:12',
-'localizacao geografica');
+'localizacao geografica',
+'DELIVERED');
 
 INSERT INTO `dm107`.`entregas`
 (`id_pedido`,
@@ -55,8 +57,36 @@ INSERT INTO `dm107`.`entregas`
 `estado`,
 `pais`,
 `recebedor_entregador`,
-`data_entrega`,
-`localizacao_geografica`)
+`localizacao_geografica`,
+`status`)
+VALUES
+(
+3,
+4,
+'Crislaine',
+'88888888888',
+'Rua 8',
+'Bairro Teste',
+'Cidade Teste',
+'Estado Teste',
+'Pais Teste',
+true,
+'localizacao geografica',
+'DELIVERED');
+
+INSERT INTO `dm107`.`entregas`
+(`id_pedido`,
+`id_cliente`,
+`nome_recebedor`,
+`cpf_recebedor`,
+`endereco`,
+`bairro`,
+`cidade`,
+`estado`,
+`pais`,
+`recebedor_entregador`,
+`localizacao_geografica`,
+`status`)
 VALUES
 (
 1,
@@ -69,8 +99,8 @@ VALUES
 'Estado Teste',
 'Pais Teste',
 true,
-'2015/01/01 15:00:12',
-'localizacao geografica');
+'localizacao geografica',
+'NEW');
 
 
 CREATE TABLE `dm107`.`user` (
