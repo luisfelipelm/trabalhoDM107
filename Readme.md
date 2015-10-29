@@ -57,6 +57,6 @@ As credenciais de administrador são:
 ## Publicação no AWS
 O trabalho foi publicado no AmazonWS nos endereços abaixo:
 
-    Relatório: *http://dm107.tk/*
-    Documentação REST Api: *http://dm107.tk:3000*
-    Serviços REST: *http://dm107.tk:3000 + #ROTAS#*
+    Relatório: http://dm107.tk/
+    Documentação REST Api: http://dm107.tk:3000
+    Serviços REST: http://dm107.tk:3000 + #ROTAS#
