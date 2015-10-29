@@ -1,6 +1,6 @@
 var connection = require('../config/connectionDB');
 
-var products = {
+var delivery = {
 
   getAll: function(req, res) {
     connection.query('SELECT * from entregas', function(err, rows, fields) {
@@ -32,7 +32,7 @@ var products = {
   },
 
   create: function(req, res) {
-    req.params.status = 'NEW';
+    req.body.status = 'NEW';
     connection.query('INSERT INTO entregas SET ?',req.body, function(err, rows, fields) {
         if (!err) {
             console.log('POST OK');
@@ -70,4 +70,4 @@ var products = {
 };
 
 
-module.exports = products;
+module.exports = delivery;

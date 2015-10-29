@@ -11,7 +11,6 @@ var auth = {
     console.log(req.body);  
     var username = req.body.username || '';
     var password = req.body.password || '';
-      
     if (username == '' || password == '') {  
       res.status(401);
       res.json({
@@ -49,7 +48,6 @@ var auth = {
   validate: function(username, password, callback) {
     // spoofing the DB response for simplicity
     var dbUserObj;
-    
     connection.query("SELECT * from user WHERE email = '" + username + "'" + "and password = " + "'" + password + "'", function(err, rows, fields) {
         if (!err) {
             console.log(rows);
