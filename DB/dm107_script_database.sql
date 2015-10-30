@@ -77,28 +77,22 @@ true,
 INSERT INTO `dm107`.`entregas`
 (`id_pedido`,
 `id_cliente`,
-`nome_recebedor`,
-`cpf_recebedor`,
 `endereco`,
 `bairro`,
 `cidade`,
 `estado`,
 `pais`,
-`recebedor_entregador`,
 `localizacao_geografica`,
 `status`)
 VALUES
 (
 1,
 3,
-'Cecilia',
-'12345678900',
 'Rua Teste 509',
 'Bairro Teste',
 'Cidade Teste',
 'Estado Teste',
 'Pais Teste',
-true,
 'localizacao geografica',
 'NEW');
 
