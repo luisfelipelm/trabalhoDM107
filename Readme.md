@@ -18,7 +18,7 @@ Para utilizar a api, é necessário ter o token de acesso em mãos.
 
 Acesse algum aplicativo REST para "logar" e receber o token de acesso.
 
-Utilize a URL http://localhost:3000/login com o método POST e o JSON {"username":"admi@admin.com","password":"admin"} e Content-Type "application/json" .
+Utilize a URL http://localhost:3000/login com o método POST e o JSON {"username":"admin@admin.com","password":"admin"} e Content-Type "application/json" .
 
 O Response será algo parecido com:  
 {  
@@ -43,7 +43,7 @@ Utilize a URL http://localhost:3000/login , Content-Type "application/json" e Re
 
 
 ## Relatório
-O trabalho possui um relatório que mostra a relação de entregas por status: "entregues", "em transporte" e "novos".
+O trabalho possui um relatório que mostra a relação de entregas por status entregues, em transporte e novos: "DELIVERED", "IN TRANSPORT" e "NEW".
 Para acessar o relatório localmente é preciso acesar a págima index, localizada dentro do diretório client.
 No AWS é possível acessar esta página atravéz da url *http://dm107.tk/*
 
